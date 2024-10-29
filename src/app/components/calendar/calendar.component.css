@@ -1,25 +1,38 @@
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #1a1a1a, #333333); /* Dark gradient background */
+    background: linear-gradient(to right, #1a1a1a, #333333);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    color: #e0e0e0; /* Light gray text color for dark mode */
+    color: #e0e0e0;
 }
 
+/*Background of the calendar*/
 .container {
     text-align: center;
-    color: #e0e0e0; /* Light gray for text inside the container */
+    color: #e0e0e0;
     padding: 20px;
-    background: rgba(40, 40, 40, 0.9); /* Dark semi-transparent background */
+    background: rgba(40, 40, 40, 0.9);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
     border-radius: 8px;
+    animation: flyIn 1s ease-in forwards;
+}
+
+@keyframes flyIn {
+    0% {
+        transform: translateY(100%); /* Starts from below the viewport */
+        opacity: 0; /* Starts as invisible */
+    }
+    100% {
+        transform: translateY(0); /* Moves to original position */
+        opacity: 1; /* Fully visible */
+    }
 }
 
 .calendar {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(6, 1fr); /*Makes the grid 5x6*/
     gap: 5px;
     margin: 20px auto;
     width: fit-content;
@@ -29,7 +42,7 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 4px;
-    border: 1px solid #444; /* Dark border */
+    border: 1px solid #444;
     position: relative;
     overflow: hidden;
     transform: scale(1);
@@ -38,35 +51,37 @@ body {
 
 .day:hover {
     transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Dark shadow */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
+/*Contribution levels*/
 .day.contribution-0 {
-    background-color: #3a3a3a; /* Dark gray - No contributions */
+    background-color: #3a3a3a;
 }
 
 .day.contribution-1 {
-    background-color: #7bff0048; /* Soft green - Low contributions */
+    background-color: #7bff0048;
 }
 
 .day.contribution-2 {
-    background-color: #44ff007e; /* Medium green - Moderate contributions */
+    background-color: #44ff007e;
 }
 
 .day.contribution-3 {
-    background-color: #00ff04; /* Darker green - High contributions */
+    background-color: #00ff04;
 }
 
 .day.contribution-4 {
-    background-color: #118B44; /* Very dark green - Very high contributions */
+    background-color: #118B44;
 }
 
+/*Number of contributions shows up inside the box when hovered*/
 .day .date {
     position: absolute;
     bottom: 5px;
     right: 5px;
-    font-size: 12px;
-    color: #e0e0e0; /* Light gray text color */
+    font-size: 1em;
+    color: #ffffff;
     opacity: 0;
     transition: opacity 0.3s;
 }
@@ -74,4 +89,3 @@ body {
 .day:hover .date {
     opacity: 1;
 }
-

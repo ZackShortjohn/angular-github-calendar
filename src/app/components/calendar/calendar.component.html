@@ -1,27 +1,18 @@
 <div  class="container" style="margin-top: 5%;">
-    <h1 class="text-center my-4">GitHub Contribution Calendar</h1>
+    <h1 class="text-center my-4">{{user}}'s GitHub Contribution Calendar</h1>
     <div class="calendar">
       <div *ngFor="let contribution of monthlyActivity; let i = index" 
       [ngClass]="{
-        'day': true,
+        'day': true,       
         'contribution-0': contribution === 0,
         'contribution-1': contribution >= 1,
         'contribution-2': contribution >= 4,
         'contribution-3': contribution >= 7,
         'contribution-4': contribution >= 10
       }"
-      data-toggle="tooltip" 
-      data-placement="top" 
-      title= "{{contribution}} contributions {{lastMonthArray[i]}}">
-        <div  class="date"></div>
+      data-toggle="tooltip" data-placement="top" 
+      title= "{{contribution}} contributions {{lastMonthArray[i]}}"> <!--On hover a message shows the contributions and the date-->
+        <div  class="date">{{contribution}}</div>
       </div>
     </div>
 </div>
-
-<!-- <div class="row">
-    <div class="col-4">
-        <ul>
-           <li *ngFor="let item of roleList">{{item.type}} {{item.created_at}}</li> 
-        </ul>
-    </div>
-</div> -->
